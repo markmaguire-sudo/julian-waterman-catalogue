@@ -1,0 +1,6 @@
+{
+  "name": "Julian Waterman Fine Art Catalogue",
+  "description": "An elegant art portfolio catalogue with custom collections management, image upload, and direct artist contact.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
