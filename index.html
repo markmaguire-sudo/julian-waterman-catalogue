@@ -7,7 +7,7 @@
     
     <!-- PWA Settings & Icons -->
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="theme-color" content="#f1ede9" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -24,72 +24,96 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <!-- Top Progress Indicator for Navigation -->
+    <!-- Top Progress Indicator for Actions -->
     <div class="top-bar-loader" id="loader"></div>
 
-    <!-- Semantic Site Header -->
-    <header class="site-header">
-      <div class="header-container">
-        <div class="brand">
-          <h1 class="brand-title">Julian Waterman</h1>
-          <p class="brand-subtitle">Fine Art & Catalogue</p>
-        </div>
-        
-        <!-- Top Navigation -->
-        <nav class="main-nav">
-          <a href="#catalogue" class="nav-link active">Catalogue</a>
-          <a href="#contact-section" class="nav-link">Contact & Inquiries</a>
-          <button id="admin-toggle-btn" class="nav-action-btn" title="Artist Studio Portal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            Studio Portal
-          </button>
-        </nav>
+    <!-- Mobile Sticky Navigation Header (Visible only on mobile viewports) -->
+    <header class="mobile-header">
+      <div class="mobile-brand">
+        <h1 class="mobile-brand-title">Julian Waterman</h1>
+        <span class="mobile-brand-subtitle">Fine Art Catalogue</span>
       </div>
+      <button class="drawer-toggle-btn" id="drawer-toggle-btn" aria-label="Open curation menu">
+        Menu
+      </button>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="content-wrapper">
-      
-      <!-- Hero/Introduction Section -->
-      <section class="hero-intro">
-        <div class="hero-text">
-          <span class="hero-badge">Exhibition & Catalogue Raisonné</span>
-          <h2 class="hero-quote">“Light, space, and tactile geometry are the parameters through which I search for balance.”</h2>
-          <p class="hero-paragraph">Welcome to the digital catalogue of contemporary painter Julian Waterman. Explore curated collections, filtered archives, and manage the studio catalogue directly from your browser. Persisted fully via client-side storage for offline accessibility.</p>
-        </div>
-      </section>
+    <!-- ---------------------------------------------------- -->
+    /* Left Fixed Sidebar (Desktop Navigation & Curation)   */
+    <!-- ---------------------------------------------------- -->
+    <aside class="gallery-sidebar" id="sidebar-drawer">
+      <!-- Mobile Drawer Close Button -->
+      <button class="sidebar-close-btn" id="close-drawer-btn" aria-label="Close curation menu">
+        &times;
+      </button>
 
-      <!-- Collections / Curated Views Bar -->
+      <!-- Artist Brand Block -->
+      <div class="sidebar-brand">
+        <h1 class="brand-title">Julian Waterman</h1>
+        <p class="brand-subtitle">Fine Art & Catalogue</p>
+      </div>
+      
+      <!-- Primary Section Navigation -->
+      <nav class="sidebar-nav">
+        <a href="#catalogue" class="nav-link active">Catalogue</a>
+        <a href="#contact-section" class="nav-link">Contact & Inquiries</a>
+      </nav>
+
+      <!-- Studio management action -->
+      <div class="sidebar-actions">
+        <button id="admin-toggle-btn" class="nav-action-btn" title="Artist Studio Portal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          Studio Portal
+        </button>
+      </div>
+
+      <!-- Live Filters & Archive Search panel -->
+      <h3 class="sidebar-curation-heading">Filter Catalogue</h3>
+      <div class="search-box-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="catalogue-search" placeholder="Search title, medium, narrative..." />
+      </div>
+
+      <!-- Medium filter category hooks -->
+      <div class="filter-buttons-wrapper" id="medium-filters">
+        <!-- Medium filters are injected dynamically by app.js -->
+      </div>
+
+      <!-- Curated collections / series vertical list -->
+      <h3 class="sidebar-curation-heading">Curated Series</h3>
       <section class="collections-carousel" id="collections-bar">
         <!-- Injected dynamically by app.js -->
       </section>
+    </aside>
 
-      <!-- Filter Controls & Search Panel -->
-      <section class="filter-controls-panel" id="catalogue">
-        <div class="search-box-wrapper">
-          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="catalogue-search" placeholder="Search archive by title, medium, or description..." />
-        </div>
-        
-        <div class="filter-buttons-wrapper" id="medium-filters">
-          <!-- Medium filters injected dynamically by app.js -->
+    <!-- ---------------------------------------------------- -->
+    /* Right Scrollable Main Canvas                         */
+    <!-- ---------------------------------------------------- -->
+    <main class="main-canvas">
+      
+      <!-- Museum Hero/Introduction Block -->
+      <section class="hero-intro">
+        <div class="hero-text">
+          <span class="hero-badge">Curator's Exhibition Catalogue</span>
+          <h2 class="hero-quote">“Light, space, and tactile geometry are the parameters through which I search for balance.”</h2>
+          <p class="hero-paragraph">Explore the digital catalogue raisonné of contemporary painter Julian Waterman. Filter curated series, study physical composures, and register enquiries directly with the London studio.</p>
         </div>
       </section>
 
-      <!-- Active Filter Summary -->
-      <div class="active-filter-badge-row" id="active-filters-summary">
+      <!-- Active Curation State Indicators -->
+      <div class="active-filter-badge-row" id="catalogue">
         <span id="results-count">Showing all artworks</span>
         <button id="clear-filters-btn" class="clear-filters-btn">Reset Filters</button>
       </div>
 
-      <!-- Main Artworks Grid (Requested id: "catalogue-grid") -->
+      <!-- Fluid Artwork Gallery Grid (Requested id: "catalogue-grid") -->
       <section class="catalogue-container">
         <div id="catalogue-grid" class="catalogue-grid">
           <!-- Artwork Cards are injected here by app.js -->
         </div>
       </section>
 
-      <!-- Artist Inquiries & Contact Section -->
+      <!-- Artist Inquiries & Press Section -->
       <section class="contact-section" id="contact-section">
         <div class="contact-grid">
           <div class="contact-info">
@@ -145,104 +169,118 @@
         </div>
       </section>
 
-      <!-- Artist / Administrator Portal (Toggled via button) -->
-      <section class="admin-portal-panel hidden" id="admin-portal">
-        <div class="admin-header">
-          <h3 class="admin-title">Studio Manager Portal</h3>
-          <button id="close-admin-btn" class="close-panel-btn">&times;</button>
-        </div>
-        
-        <p class="admin-desc">Manage the catalogue in real-time. Changes are immediately saved and cached locally, providing seamless offline PWA functionality.</p>
-
-        <div class="admin-tabs">
-          <button class="admin-tab-btn active" data-tab="add-art">Add New Artwork</button>
-          <button class="admin-tab-btn" data-tab="add-collection">Add Collection</button>
-          <button class="admin-tab-btn" data-tab="messages-list">Messages Inbox <span id="unread-count" class="badge">0</span></button>
-        </div>
-
-        <!-- Add Artwork Form -->
-        <div class="admin-tab-content" id="tab-add-art">
-          <form id="add-artwork-form" class="elegant-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="art-title">Artwork Title *</label>
-                <input type="text" id="art-title" required placeholder="e.g. Prism of Silence" />
-              </div>
-              <div class="form-group">
-                <label for="art-year">Year *</label>
-                <input type="text" id="art-year" required value="2026" />
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="art-medium">Medium *</label>
-                <input type="text" id="art-medium" required placeholder="e.g. Oil and Wax on Panel" />
-              </div>
-              <div class="form-group">
-                <label for="art-dimensions">Dimensions *</label>
-                <input type="text" id="art-dimensions" required placeholder="e.g. 120cm x 120cm" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="art-collection">Curated Collection</label>
-                <select id="art-collection">
-                  <option value="">Uncategorised / Single Work</option>
-                  <!-- Injected dynamically by app.js -->
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="art-image-url">Image URL *</label>
-                <input type="url" id="art-image-url" required placeholder="e.g. https://images.unsplash.com/photo-..." />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="art-desc">Artwork Description & Narrative</label>
-              <textarea id="art-desc" rows="3" placeholder="Describe the physical composition, story, or exhibition history..."></textarea>
-            </div>
-
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="art-featured" />
-              <label for="art-featured">Feature this artwork on the homepage banner</label>
-            </div>
-
-            <button type="submit" class="submit-btn primary-btn">Publish to Catalogue</button>
-          </form>
-        </div>
-
-        <!-- Add Collection Form -->
-        <div class="admin-tab-content hidden" id="tab-add-collection">
-          <form id="add-collection-form" class="elegant-form">
-            <div class="form-group">
-              <label for="col-name">Collection Name *</label>
-              <input type="text" id="col-name" required placeholder="e.g. Primal Elements" />
-            </div>
-            <div class="form-group">
-              <label for="col-image">Cover Image URL *</label>
-              <input type="url" id="col-image" required placeholder="https://images.unsplash.com/..." />
-            </div>
-            <div class="form-group">
-              <label for="col-desc">Collection Statement & Description</label>
-              <textarea id="col-desc" rows="3" placeholder="Enter the curatorial theme or essay for this body of work..."></textarea>
-            </div>
-            <button type="submit" class="submit-btn primary-btn">Create Collection</button>
-          </form>
-        </div>
-
-        <!-- Messages Inbox -->
-        <div class="admin-tab-content hidden" id="tab-messages-list">
-          <div class="messages-container" id="admin-messages-list">
-            <p class="empty-state-msg">No inquiries received yet.</p>
+      <!-- Editorial Footer -->
+      <footer class="site-footer">
+        <div class="footer-container">
+          <p class="footer-copyright">&copy; 2026 Julian Waterman. All rights reserved. Designed in the UK.</p>
+          <div class="footer-links">
+            <span class="pwa-badge">✓ PWA Enabled</span>
+            <span class="pwa-badge" id="online-status-badge">Online</span>
           </div>
         </div>
-      </section>
-
+      </footer>
     </main>
 
-    <!-- Art Detail Slide-Over / Full screen overlay Modal -->
+    <!-- ---------------------------------------------------- -->
+    /* Studio Manager Portal Drawer Overlay                 */
+    <!-- ---------------------------------------------------- -->
+    <section class="admin-portal-panel hidden" id="admin-portal">
+      <div class="admin-header">
+        <h3 class="admin-title">Studio Manager Portal</h3>
+        <button id="close-admin-btn" class="close-panel-btn">&times;</button>
+      </div>
+      
+      <p class="admin-desc">Manage the catalogue in real-time. Changes are immediately saved and cached locally, providing seamless offline PWA functionality.</p>
+
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="add-art">Add New Artwork</button>
+        <button class="admin-tab-btn" data-tab="add-collection">Add Collection</button>
+        <button class="admin-tab-btn" data-tab="messages-list">Messages Inbox <span id="unread-count" class="badge">0</span></button>
+      </div>
+
+      <!-- Add Artwork Form -->
+      <div class="admin-tab-content" id="tab-add-art">
+        <form id="add-artwork-form" class="elegant-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="art-title">Artwork Title *</label>
+              <input type="text" id="art-title" required placeholder="e.g. Prism of Silence" />
+            </div>
+            <div class="form-group">
+              <label for="art-year">Year *</label>
+              <input type="text" id="art-year" required value="2026" />
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="art-medium">Medium *</label>
+              <input type="text" id="art-medium" required placeholder="e.g. Oil and Wax on Panel" />
+            </div>
+            <div class="form-group">
+              <label for="art-dimensions">Dimensions *</label>
+              <input type="text" id="art-dimensions" required placeholder="e.g. 120cm x 120cm" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="art-collection">Curated Collection</label>
+              <select id="art-collection">
+                <option value="">Uncategorised / Single Work</option>
+                <!-- Injected dynamically by app.js -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="art-image-url">Image URL *</label>
+              <input type="url" id="art-image-url" required placeholder="e.g. https://images.unsplash.com/photo-..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="art-desc">Artwork Description & Narrative</label>
+            <textarea id="art-desc" rows="3" placeholder="Describe the physical composition, story, or exhibition history..."></textarea>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="art-featured" />
+            <label for="art-featured">Feature this artwork on the homepage banner</label>
+          </div>
+
+          <button type="submit" class="submit-btn primary-btn">Publish to Catalogue</button>
+        </form>
+      </div>
+
+      <!-- Add Collection Form -->
+      <div class="admin-tab-content hidden" id="tab-add-collection">
+        <form id="add-collection-form" class="elegant-form">
+          <div class="form-group">
+            <label for="col-name">Collection Name *</label>
+            <input type="text" id="col-name" required placeholder="e.g. Primal Elements" />
+          </div>
+          <div class="form-group">
+            <label for="col-image">Cover Image URL *</label>
+            <input type="url" id="col-image" required placeholder="https://images.unsplash.com/..." />
+          </div>
+          <div class="form-group">
+            <label for="col-desc">Collection Statement & Description</label>
+            <textarea id="col-desc" rows="3" placeholder="Enter the curatorial theme or essay for this body of work..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn primary-btn">Create Collection</button>
+        </form>
+      </div>
+
+      <!-- Messages Inbox -->
+      <div class="admin-tab-content hidden" id="tab-messages-list">
+        <div class="messages-container" id="admin-messages-list">
+          <p class="empty-state-msg">No inquiries received yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    /* Gallery Detail Overlay Modal                         */
+    <!-- ---------------------------------------------------- -->
     <div class="modal-backdrop hidden" id="detail-modal">
       <div class="modal-content">
         <button class="close-modal-btn" id="close-modal-btn" aria-label="Close modal">&times;</button>
@@ -277,18 +315,40 @@
       </div>
     </div>
 
-    <!-- Editorial Footer -->
-    <footer class="site-footer">
-      <div class="footer-container">
-        <p class="footer-copyright">&copy; 2026 Julian Waterman. All rights reserved. Designed in the UK.</p>
-        <div class="footer-links">
-          <span class="pwa-badge">✓ PWA Enabled</span>
-          <span class="pwa-badge" id="online-status-badge">Online</span>
-        </div>
-      </div>
-    </footer>
-
     <!-- Logic Script (No-build step direct loading) -->
     <script type="module" src="/app.js"></script>
+
+    <!-- Self-contained mobile interactive drawer script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const drawerToggle = document.getElementById('drawer-toggle-btn');
+        const sidebar = document.getElementById('sidebar-drawer');
+        const closeDrawer = document.getElementById('close-drawer-btn');
+        
+        if (drawerToggle && sidebar) {
+          drawerToggle.addEventListener('click', () => {
+            sidebar.classList.add('drawer-open');
+          });
+        }
+        
+        if (closeDrawer && sidebar) {
+          closeDrawer.addEventListener('click', () => {
+            sidebar.classList.remove('drawer-open');
+          });
+        }
+
+        // Close sidebar drawer when clicking a navigation link or curated collection series in mobile view
+        const interactiveElements = sidebar.querySelectorAll('a, button, .collection-card');
+        interactiveElements.forEach(elem => {
+          elem.addEventListener('click', (e) => {
+            // Do not close drawer if clicking search input
+            if (e.target.tagName === 'INPUT') return;
+            if (window.innerWidth <= 768) {
+              sidebar.classList.remove('drawer-open');
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
