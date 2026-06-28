@@ -39,9 +39,10 @@
     </header>
 
     <!-- ---------------------------------------------------- -->
-    /* Left Fixed Sidebar (Desktop Navigation & Curation)   */
+    <!-- Left Fixed Sidebar (Desktop Navigation & Curation)   -->
     <!-- ---------------------------------------------------- -->
-    <aside class="gallery-sidebar" id="sidebar-drawer">
+    <div class="gallery-wrapper">
+      <aside class="sidebar" id="sidebar-drawer">
       <!-- Mobile Drawer Close Button -->
       <button class="sidebar-close-btn" id="close-drawer-btn" aria-label="Close curation menu">
         &times;
@@ -107,10 +108,8 @@
       </div>
 
       <!-- Fluid Artwork Gallery Grid (Requested id: "catalogue-grid") -->
-      <section class="catalogue-container">
-        <div id="catalogue-grid" class="catalogue-grid">
-          <!-- Artwork Cards are injected here by app.js -->
-        </div>
+      <section id="catalogue-grid" class="catalogue-grid catalogue-container">
+        <!-- Artwork display cards are injected dynamically by app.js -->
       </section>
 
       <!-- Artist Inquiries & Press Section -->
@@ -180,6 +179,7 @@
         </div>
       </footer>
     </main>
+  </div>
 
     <!-- ---------------------------------------------------- -->
     /* Studio Manager Portal Drawer Overlay                 */
